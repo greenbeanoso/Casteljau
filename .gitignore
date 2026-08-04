@@ -22,3 +22,6 @@ Makefile
 
 # IDE
 .vscode/
+
+#minestuf
+notes/
