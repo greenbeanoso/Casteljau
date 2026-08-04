@@ -21,15 +21,15 @@ int main(){
     }
     std::fprintf(stderr, "[casteljau]" ANSI_COLOR_GREEN " GLFW 初始化成功！" ANSI_COLOR_RESET "\n");
     
+    // 設定視窗
      // Request OpenGL 3.3 Core
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    // #ifdef __APPLE__ //現版本在開發上不考慮其他平台
+    // glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE); // macOS 需要這行
+    // #endif
 
-// #ifdef __APPLE__
-//     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-// #endif
-    // 設定視窗
     glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
     glfwWindowHint(GLFW_DECORATED, GLFW_FALSE);
 
@@ -42,5 +42,32 @@ int main(){
         glfwTerminate();
         return -1;
     }
-    
+    std::fprintf(stderr, "[casteljau]" ANSI_COLOR_GREEN " 視窗建立成功！" ANSI_COLOR_RESET "\n");
+    // 載入 glad(openGL function loader)
+    glfwMakeContextCurrent(window);
+    int glVersion = gladLoadGL(glfwGetProcAddress);
+    if (glVersion == 0)
+    {
+        std::fprintf(stderr, "[casteljau]" ANSI_COLOR_RED " Glad載入失敗！" ANSI_COLOR_RESET "\n");
+        std::fprintf(stderr, "[casteljau]" ANSI_COLOR_RED " Glad loading failed!" ANSI_COLOR_RESET "\n");
+        glfwTerminate(); //銷毀視窗
+        return -1;
+    }
+    std::fprintf(stderr, "[casteljau]" ANSI_COLOR_GREEN "載入 OpenGL %d.%d\n" ANSI_COLOR_RESET "\n", GLAD_VERSION_MAJOR(glVersion), GLAD_VERSION_MINOR(glVersion));
+
+    // 主迴圈
+    while (!glfwWindowShouldClose(window))
+    {
+        // 清除顏色緩衝區
+        glClear(GL_COLOR_BUFFER_BIT);
+
+        // 這裡可以放置渲染代碼
+
+        // 交換前後緩衝區
+        glfwSwapBuffers(window);
+
+        // 處理事件
+        glfwPollEvents();
+    }
+
 }
