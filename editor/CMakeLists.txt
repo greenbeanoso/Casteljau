@@ -11,6 +11,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # -----------------------------------------------------------------------------
 add_executable(editor
     src/main.cpp
+    src/WindowManager.cpp
 )
 
 # 連結

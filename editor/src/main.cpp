@@ -4,6 +4,8 @@
 #include <glad/gl.h>
 #include <GLFW/glfw3.h>
 
+#include "WindowManager.h"
+
 
 #define ANSI_COLOR_RED     "\x1b[31m"
 #define ANSI_COLOR_GREEN   "\x1b[32m"
@@ -12,6 +14,19 @@
 
 int main(){
 
+    WindowManager wm;
+    
+    
+    // For test WindowsMannger
+    DockData Temp{};
+    Temp.planelA = nullptr;
+    Temp.planelB = nullptr;
+    Temp.split_ratio = 0.23f;
+    Temp.direction = SplitDirection::Horizontal;
+    
+    wm.add(std::make_unique<DockData>(Temp));
+    std::cout << "Panel Type: " << static_cast<int>(wm.getPanelPtr(0)->type()) << std::endl;
+    
     // 初始化glfw
     if (!glfwInit())
     {
@@ -69,5 +84,6 @@ int main(){
         // 處理事件
         glfwPollEvents();
     }
+    glfwTerminate(); //銷毀視窗
 
 }
