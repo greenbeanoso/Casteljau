@@ -47,7 +47,7 @@ int main(){
 
     glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
     glfwWindowHint(GLFW_DECORATED, GLFW_FALSE);
-
+    
     // 建立視窗
     GLFWwindow* window = glfwCreateWindow(800, 600, "標題", nullptr, nullptr);
     if(!window)

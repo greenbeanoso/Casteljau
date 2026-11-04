@@ -9,10 +9,7 @@ class Test
 {
 public:
 
-    static glm::vec3 getPosition();
-
-    static void createImage();
-
+    void test();
 };
 
 }

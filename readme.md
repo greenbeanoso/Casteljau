@@ -1,6 +1,6 @@
 ⚠️ **Status: Heavily Work-in-Progress (Pre-MVP)**
 # Casteljau
-這是一個基於**德卡斯特里奧算法(De Casteljau's algorithm)**或是說**貝茲曲線(Bézier curve)**為核心的電腦繪圖應用生態系
+這是一個基於**德卡斯特里奧算法(De Casteljau's algorithm)** 或是說 **貝茲曲線(Bézier curve)**為核心的電腦繪圖應用生態系
 *   **應用層:**(依賴於Core的前端系統)
     * Editor 
 *   **核心層(Core):**
